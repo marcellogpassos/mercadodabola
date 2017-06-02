@@ -1,0 +1,71 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+    $lightenGreenB: #c8e6c9;
+    $lightenGreenA: #81c784;
+    $green: #4caf50;
+    $darkenGreenA: #388e3c;
+    $darkenGreenB: #1b5e20;
+
+    $lightenGrey: #f5f5f5;
+    $darkenGrey: #212121;
+
+    .left {
+        text-align: left;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .lighten-green-b {
+        background-color: $lightenGreenB !important;
+        color: $darkenGrey !important;
+    }
+
+    .lighten-green-a {
+        background-color: $lightenGreenA !important;
+        color: $darkenGrey !important;
+    }
+
+    .green {
+        background-color: $green !important;
+        color: $lightenGrey !important;
+    }
+
+    .darken-green-a {
+        background-color: $darkenGreenA !important;
+        color: $lightenGrey !important;
+    }
+
+    .darken-green-b {
+        background-color: $darkenGreenB !important;
+        color: $lightenGrey !important;
+    }
+
+    .toolbar-background {
+        background-color: $darkenGreenB !important;
+    }
+
+    .toolbar-title,
+    .bar-buttons {
+        color: $lightenGrey !important;
+    }

@@ -1,0 +1,16 @@
+page-home {
+
+    .versus {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .partida {
+        .card-header {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+    }
+
+}

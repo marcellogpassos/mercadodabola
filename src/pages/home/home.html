@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title class="right">
+      Mercado da Bola
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngFor="let partida of partidas" class="card partida">
+
+    <ion-card-header class="darken-green-b">
+      <ion-grid>
+        <ion-row class="center">
+          <ion-col>
+            {{partida.timeMandante?.nome}}
+          </ion-col>
+          <ion-col></ion-col>
+          <ion-col>
+            {{partida.timeVisitante?.nome}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row justify-content-center>
+          <ion-col>
+            <img [src]="partida.timeMandante?.escudo" />
+          </ion-col>
+          <ion-col class="center">
+            <ion-icon class="versus" name="close"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <img [src]="partida.timeVisitante?.escudo" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+
+    <termometro [partida]="partida"></termometro>
+
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,39 @@
+<div *ngIf="widths" class="termometro-investimentos">
+
+  <div class="cor">
+
+    <div class="cor-a">
+      <div class="time-visitante" [ngStyle]="{'background-color': partida.timeVisitante?.corA, 'width': widths.timeVisitante}">
+        <div class="empate" [ngStyle]="{'width': widths.empate}">
+          <div class="time-mandante" [ngStyle]="{'background-color': partida.timeMandante?.corA, 'width': widths.timeMandante}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End .cor-a -->
+
+    <div class="cor-b">
+      <div class="time-visitante" [ngStyle]="{'background-color': partida.timeVisitante?.corB, 'width': widths.timeVisitante}">
+        <div class="empate" [ngStyle]="{'width': widths.empate}">
+          <div class="time-mandante" [ngStyle]="{'background-color': partida.timeMandante?.corB, 'width': widths.timeMandante}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End .cor-b -->
+
+    <div class="cor-c">
+      <div class="time-visitante" [ngStyle]="{'background-color': partida.timeVisitante?.corC, 'width': widths.timeVisitante}">
+        <div class="empate" [ngStyle]="{'width': widths.empate}">
+          <div class="time-mandante" [ngStyle]="{'background-color': partida.timeMandante?.corC, 'width': widths.timeMandante}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End .cor-c -->
+
+  </div>
+  <!-- End .cor -->
+
+</div>
+<!-- End .termometro-investimentos -->
