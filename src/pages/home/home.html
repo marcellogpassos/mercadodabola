@@ -11,23 +11,46 @@
 
 <ion-content padding>
 
+  <ion-card class="card partida">
+
+    <ion-card-header class="darken-green-b">
+      {{ rodada?.nome }}
+    </ion-card-header>
+
+    <ion-card-content padding>
+      <ion-grid>
+        <ion-row>
+          <ion-col text-left>
+            <button ion-button round color="dark"><ion-icon name="skip-backward" (click)="rodadaAnterior($event)"></ion-icon></button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button round color="dark"><ion-icon name="home" (click)="rodadaAtual($event)"></ion-icon></button>
+          </ion-col>
+          <ion-col text-right>
+            <button ion-button round color="dark"><ion-icon name="skip-forward" (click)="rodadaSeguinte($event)"></ion-icon></button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+
+  </ion-card>
+
   <ion-card *ngFor="let partida of partidas" class="card partida">
 
     <ion-card-header class="darken-green-b">
       <ion-grid>
-        <ion-row class="center">
-          <ion-col>
+        <ion-row>
+          <ion-col text-left>
             {{partida.timeMandante?.nome}}
           </ion-col>
-          <ion-col></ion-col>
-          <ion-col>
+          <ion-col text-right>
             {{partida.timeVisitante?.nome}}
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-card-header>
 
-    <ion-card-content>
+    <ion-card-content padding>
       <ion-grid>
         <ion-row justify-content-center>
           <ion-col>
@@ -44,6 +67,20 @@
     </ion-card-content>
 
     <termometro [partida]="partida"></termometro>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+        <ion-icon name="trending-up"></ion-icon>
+        <div>Investir</div>
+      </button>
+      </ion-col>
+      <ion-col center text-right padding>
+        <ion-note>
+          {{ partida.dataHora | date:'dd/MM/yyyy HH:mm' }}
+        </ion-note>
+      </ion-col>
+    </ion-row>
 
   </ion-card>
 

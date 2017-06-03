@@ -23,12 +23,22 @@ export class RodadasServiceProvider {
     // console.log('Hello RodadasServiceProvider Provider');
   }
 
-  getRodadaAtual() {
-    let url = Env.VARIABLES.urlBackend + Env.VARIABLES.pathGetRodadaAtual;
+  getRodadaGenerico(url) {
     return this.http.get(url, { params: this.auth.getTokenParam() })
       .map(response => response.json())
       .map(responseBody => this.criarRodada(responseBody))
       .catch(response => Observable.throw(response));
+  }
+
+  getRodada(idRodada: number) {
+    let url = Env.VARIABLES.urlBackend + Env.VARIABLES.pathGetRodada;
+    url = url.replace(":id", String(idRodada));
+    return this.getRodadaGenerico(url);
+  }
+
+  getRodadaAtual() {
+    let url = Env.VARIABLES.urlBackend + Env.VARIABLES.pathGetRodadaAtual;
+    return this.getRodadaGenerico(url);
   }
 
   criarRodada(response): Rodada {

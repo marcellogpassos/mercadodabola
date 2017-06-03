@@ -44,7 +44,6 @@ export class TermometroComponent {
       return;
     this.widths.empate = Math.round((k / valorTotal) * 100) + "%";
     this.widths.timeMandante = Math.round((totaisInvestidos.timeMandante / k) * 100) + "%";
-    console.log(this.partida);
   }
 
 }
