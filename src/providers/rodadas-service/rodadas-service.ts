@@ -23,6 +23,15 @@ export class RodadasServiceProvider {
     // console.log('Hello RodadasServiceProvider Provider');
   }
 
+  getDeadlineDaRodada(rodada: Rodada) {
+    let url = Env.VARIABLES.urlBackend + Env.VARIABLES.pathGetDeadlineDaRodada;
+    url = url.replace(":id", String(rodada.id));
+    return this.http.get(url, { params: this.auth.getTokenParam() })
+      .map(response => response.json())
+      .map(responseBody => new Date(responseBody.deadline.date))
+      .catch(response => Observable.throw(response));
+  }
+
   getRodadaGenerico(url) {
     return this.http.get(url, { params: this.auth.getTokenParam() })
       .map(response => response.json())

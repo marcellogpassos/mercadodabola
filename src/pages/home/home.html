@@ -21,13 +21,13 @@
       <ion-grid>
         <ion-row>
           <ion-col text-left>
-            <button ion-button round color="dark"><ion-icon name="skip-backward" (click)="rodadaAnterior($event)"></ion-icon></button>
+            <button *ngIf="rodada?.idRodadaAnterior" ion-button round color="dark"><ion-icon name="skip-backward" (click)="rodadaAnterior($event)"></ion-icon></button>
           </ion-col>
           <ion-col text-center>
             <button ion-button round color="dark"><ion-icon name="home" (click)="rodadaAtual($event)"></ion-icon></button>
           </ion-col>
           <ion-col text-right>
-            <button ion-button round color="dark"><ion-icon name="skip-forward" (click)="rodadaSeguinte($event)"></ion-icon></button>
+            <button *ngIf="rodada?.idRodadaSeguinte" ion-button round color="dark"><ion-icon name="skip-forward" (click)="rodadaSeguinte($event)"></ion-icon></button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -40,11 +40,17 @@
     <ion-card-header class="darken-green-b">
       <ion-grid>
         <ion-row>
-          <ion-col text-left>
-            {{partida.timeMandante?.nome}}
+          <ion-col text-center>
+            {{partida.timeMandante?.mnemonico}}
           </ion-col>
-          <ion-col text-right>
-            {{partida.timeVisitante?.nome}}
+          <ion-col *ngIf="partida.resultado === resultados.INDETERMINADO" text-center>
+            &nbsp;
+          </ion-col>
+          <ion-col *ngIf="partida.resultado != resultados.INDETERMINADO" text-center>
+            {{ partida.placarTimeMandante }} x {{ partida.placarTimeVisitante }}
+          </ion-col>
+          <ion-col text-center>
+            {{partida.timeVisitante?.mnemonico}}
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -69,11 +75,17 @@
     <termometro [partida]="partida"></termometro>
 
     <ion-row>
-      <ion-col>
+      <ion-col *ngIf="validarDeadline()">
         <button ion-button icon-left clear small>
-        <ion-icon name="trending-up"></ion-icon>
-        <div>Investir</div>
-      </button>
+          <ion-icon name="trending-up"></ion-icon>
+          <div>Investir</div>
+        </button>
+      </ion-col>
+      <ion-col *ngIf="!validarDeadline()">
+        <button ion-button icon-left clear small>
+          <ion-icon name="search"></ion-icon>
+          <div>Detalhar</div>
+        </button>
       </ion-col>
       <ion-col center text-right padding>
         <ion-note>

@@ -19,8 +19,11 @@ export class HomePage {
   user: User;
   rodada: Rodada;
   partidas: Partida[];
+  deadline: Date;
 
   loading: Loading;
+
+  resultados: any = Partida.RESULTADOS;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthServiceProvider,
     private partidasService: PartidasServiceProvider, private rodadasService: RodadasServiceProvider,
@@ -39,6 +42,7 @@ export class HomePage {
 
   initRodada(rodada: Rodada) {
     this.rodada = rodada;
+    this.initDeadline();
     this.showLoading("Carregando partidas...");
     this.partidasService.listarPartidasPorRodada(this.rodada)
       .subscribe(partidas =>
@@ -47,6 +51,14 @@ export class HomePage {
         this.handleError(error, "Falha ao carregar a lista de partidas da rodada!"),
       () =>
         this.loading.dismiss());
+  }
+
+  initDeadline() {
+    this.rodadasService.getDeadlineDaRodada(this.rodada)
+      .subscribe(deadline =>
+        this.deadline = deadline,
+      error =>
+        this.handleError(error, "Falha ao carregar o deadline da rodada!"));
   }
 
   initPartidas(partidas: Partida[]) {
@@ -94,6 +106,13 @@ export class HomePage {
       buttons: ['OK']
     });
     alert.present(prompt);
+  }
+
+  validarDeadline() {
+    if (!this.deadline)
+      return null;
+    let now = new Date();
+    return this.deadline.getTime() > now.getTime();
   }
 
 }
