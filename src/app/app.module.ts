@@ -8,6 +8,7 @@ import { LoginPageModule } from "../pages/login/login.module";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { PartidaPage } from '../pages/partida/partida';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,6 +23,7 @@ import { TermometroComponent } from '../components/termometro/termometro';
     MyApp,
     HomePage,
     ListPage,
+    PartidaPage,
     TermometroComponent
   ],
   imports: [
@@ -34,7 +36,8 @@ import { TermometroComponent } from '../components/termometro/termometro';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    PartidaPage
   ],
   providers: [
     StatusBar,

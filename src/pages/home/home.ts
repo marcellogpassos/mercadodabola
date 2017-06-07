@@ -5,6 +5,8 @@ import { User } from "../../model/user";
 import { Partida } from "../../model/partida";
 import { Rodada } from "../../model/rodada";
 
+import { PartidaPage } from "../partida/partida";
+
 import { AuthServiceProvider } from "../../providers/auth-service/auth-service";
 import { PartidasServiceProvider } from "../../providers/partidas-service/partidas-service";
 import { RodadasServiceProvider } from "../../providers/rodadas-service/rodadas-service";
@@ -113,6 +115,12 @@ export class HomePage {
       return null;
     let now = new Date();
     return this.deadline.getTime() > now.getTime();
+  }
+
+  detalharPartida(event, partida) {
+    this.navCtrl.push(PartidaPage, {
+      partida: partida
+    });
   }
 
 }

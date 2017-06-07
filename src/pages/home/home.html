@@ -76,13 +76,13 @@
 
     <ion-row>
       <ion-col *ngIf="validarDeadline()">
-        <button ion-button icon-left clear small>
+        <button ion-button icon-left clear small (click)="detalharPartida($event, partida)">
           <ion-icon name="trending-up"></ion-icon>
           <div>Investir</div>
         </button>
       </ion-col>
       <ion-col *ngIf="!validarDeadline()">
-        <button ion-button icon-left clear small>
+        <button ion-button icon-left clear small (click)="detalharPartida($event, partida)">
           <ion-icon name="search"></ion-icon>
           <div>Detalhar</div>
         </button>
